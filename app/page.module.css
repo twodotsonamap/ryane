@@ -1,0 +1,249 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Top-aligned so the full-viewport hero starts at the very top edge. */
+  justify-content: flex-start;
+}
+
+.main {
+  width: 100%;
+  max-width: 800px;
+  padding: 3rem 1.5rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.hero {
+  /* Full-viewport background photo. */
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background-color: #000;
+}
+
+/* The photo, centered vertically inside the black hero.
+   - aspect-ratio 3/4 is the crop ceiling: cover shows at most the center 50%
+     of the image width (any taller would crop more).
+   - min-height fills ~82% of the viewport height on tall phones, so the black
+     bars stay small (~9% each) and the photo runs under the header/date cards.
+   - max-height lets it grow to fully cover the viewport on wider screens,
+     where cover crops less than 50% and no black shows. */
+.heroMedia {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  min-height: 60svh;
+  max-height: 100svh;
+}
+
+.heroImage {
+  /* Cover the crop window and darken slightly, since the photo acts as a
+     background behind the overlaid text. */
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.7);
+}
+
+/* Bouncing chevron pinned to the bottom of the hero, hinting there's more
+   below the full-height viewport. */
+.scrollCue {
+  position: absolute;
+  left: 50%;
+  bottom: 1.25rem;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.9);
+  animation: scrollCueBounce 1.8s ease-in-out infinite;
+}
+
+.scrollCue svg {
+  display: block;
+  width: 48px; /* wide */
+  height: auto; /* very short — driven by the 48x7 viewBox */
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+}
+
+@keyframes scrollCueBounce {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrollCue {
+    animation: none;
+  }
+}
+
+/* Text layer sitting on top of the photo */
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(7.4rem, 4vw, 3rem) 1.5rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.heroHeader,
+.heroDetails {
+  background-color: var(--photo-red);
+  color: #fff;
+  padding: 1.25rem 2.25rem;
+  border-radius: 4px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  letter-spacing: 0.4em;
+  color: #ffe9df;
+  font-weight: 400;
+  margin: 0 0 0.5rem;
+}
+
+.names {
+  font-family: var(--font-martel), serif;
+  font-size: 3.5rem;
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+}
+
+.heroDetails h2 {
+  font-family: var(--font-martel), serif;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  margin: 0 0 0.25rem;
+}
+
+.location {
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  color: #ffe9df;
+  margin: 0;
+}
+
+.saveTheDateNotice {
+  /* Warm near-black card that lifts off the flat page while staying in the
+     dark theme, so the ivory form below remains the bright "action" surface.
+     The red-orange top accent echoes the hero cards and marks this out as the
+     featured statement. */
+  background-color: #1c1512;
+  color: #ece7e0;
+  padding: clamp(2rem, 5vw, 3rem);
+  border-radius: 8px;
+  border-top: 4px solid var(--photo-red);
+  margin-bottom: 4rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.saveTheDateNotice p {
+  font-family: var(--font-martel), serif;
+  font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+
+.guestInfoSection {
+  background-color: var(--form-bg);
+  padding: 2.5rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 4rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.guestInfoCard {
+  position: relative;
+}
+
+.guestInfoCard iframe {
+  display: block;
+}
+
+/* Opaque strip covering the "Made with Tally" badge at the bottom of the
+   iframe. Matches the card background so it blends in. Height is tuned to the
+   badge; increase it if the badge peeks through, decrease if it clips the
+   form's submit button. */
+.tallyBadgeCover {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3.5rem;
+  background-color: var(--form-bg);
+  pointer-events: none;
+}
+
+.guestInfoCard h3 {
+  font-family: var(--font-martel), serif;
+  font-size: 1.8rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.guestInfoCard p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.footer {
+  border-top: 1px solid #222;
+  padding-top: 2rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.copywright {
+  font-weight: bold;
+  margin-top: 1rem;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+  /* Tighter type and cards so the overlay feels balanced on phones. */
+  .heroHeader,
+  .heroDetails {
+    padding: 0.75rem 1.25rem;
+  }
+
+  .subtitle {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+  }
+
+  .names {
+    font-size: 2rem;
+  }
+
+  .heroDetails h2 {
+    font-size: 1.4rem;
+  }
+
+  .location {
+    font-size: 0.85rem;
+  }
+}
