@@ -61,8 +61,7 @@ export default function SaveTheDate() {
                     single frame!
                     <br/><br/>
                     We would love nothing more than to have you in the picture with us.
-                    If you’re planning to celebrate by our side, please drop your address below so we can pin you on
-                    our map.
+                    Please drop your address below so we can pin you on our map.
                 </p>
             </section>
 
@@ -85,11 +84,12 @@ export default function SaveTheDate() {
 
             <footer className={styles.footer}>
                 <p>
-                    You’ve reached the end of the page! We know this is in short notice and so we hope you can make
-                    it! <br/>
-                    Full wedding experience, registry, and official RSVP portal coming soon.
+                    You’ve reached the end of the page! We know this is on short notice and so we hope you can come
+                    join us. <br/> We’re celebrating with a delicious feast and good company rather than a traditional
+                    wedding. <br/>
+                    Full wedding details, registry, and official RSVP portal coming soon.
                 </p>
-                <p className={styles.copywright}>&copy; 2026 | ane & ryan | two dots on a map</p>
+                <p className={styles.copywright}>&copy; 2026 | ane &amp; ryan | two dots on a map</p>
             </footer>
         </main>
     </div>);
