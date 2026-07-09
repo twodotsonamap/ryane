@@ -141,11 +141,7 @@
 }
 
 .saveTheDateNotice {
-  /* Warm near-black card that lifts off the flat page while staying in the
-     dark theme, so the ivory form below remains the bright "action" surface.
-     The red-orange top accent echoes the hero cards and marks this out as the
-     featured statement. */
-  background-color: #1c1512;
+  background-color: #261f1d;
   color: #ece7e0;
   padding: clamp(2rem, 5vw, 3rem);
   border-radius: 8px;

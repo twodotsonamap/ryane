@@ -89,7 +89,7 @@ export default function SaveTheDate() {
                     wedding. <br/>
                     Full wedding details, registry, and official RSVP portal coming soon.
                 </p>
-                <p className={styles.copywright}>&copy; 2026 | ane &amp; ryan | two dots on a map</p>
+                <p className={styles.copywright}>&#x2299; 2026 | ryan & ane | two dots on a map &#x2299;</p>
             </footer>
         </main>
     </div>);
