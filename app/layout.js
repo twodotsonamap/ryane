@@ -13,9 +13,25 @@ const monsterrat = Montserrat({
   weight: ["300", "400"],
 });
 
+const title = "Ryan & Anneline | Save the Date";
+const description = "Save the Date for Ryan and Anneline's wedding.";
+
 export const metadata = {
-  title: "Ryan & Anneline | Save the Date",
-  description: "Save the Date for Ryan and Anneline's wedding.",
+  metadataBase: new URL("https://ryane.twodotsonamap.com"),
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+    url: "/",
+    images: [{ url: "/img/savethedate-onryane.jpg", width: 3764, height: 2501 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/img/savethedate-onryane.jpg"],
+  },
 };
 
 export default function RootLayout({ children }) {
